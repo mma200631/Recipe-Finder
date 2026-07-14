@@ -11,7 +11,7 @@ The purpose of writing this software was to improve my understanding of JavaScri
 
 ## Software Demo Video
 
-[Software Demo Video](https://youtu.be/Cdl9iENMzDI)
+Demo video: (https://youtu.be/Cdl9iENMzDI)
 
 # Development Environment
 
