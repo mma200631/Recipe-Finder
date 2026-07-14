@@ -1,9 +1,8 @@
 import { getRecipeById } from "./api.js";
+import { displayInstructions } from "./utils.js";
 
 const params = new URLSearchParams(window.location.search);
 const recipeId = params.get("id");
-
-console.log("Recipe ID:", recipeId);
 
 const recipeContainer = document.getElementById("recipeDetails");
 
@@ -13,103 +12,118 @@ async function loadRecipe() {
 
         const recipe = await getRecipeById(recipeId);
 
-        console.log("Recipe:", recipe);
-
         if (!recipe) {
 
-            recipeContainer.innerHTML = "<h2>Recipe not found.</h2>";
+            recipeContainer.innerHTML = `
+                <h2>Recipe not found.</h2>
+            `;
 
             return;
+
         }
 
         recipeContainer.innerHTML = `
 
-       <div class="recipe-hero">
+        <div class="recipe-hero">
 
-    <img
-        src="${recipe.strMealThumb}"
-        alt="${recipe.strMeal}"
-    >
+            <img
+                src="${recipe.strMealThumb}"
+                alt="${recipe.strMeal}"
+            >
 
-</div>
+        </div>
 
-<div class="recipe-info">
+        <div class="recipe-info">
 
-    <h1>${recipe.strMeal}</h1>
+            <h1>${recipe.strMeal}</h1>
 
-    <div class="recipe-meta">
+            <div class="recipe-meta">
 
-        <span>🌍 ${recipe.strArea}</span>
+                <span>🌍 ${recipe.strArea}</span>
 
-        <span>🍽️ ${recipe.strCategory}</span>
+                <span>🍽️ ${recipe.strCategory}</span>
 
-    </div>
+            </div>
 
-   <button
-    class="favorite-btn"
-    id="favoriteBtn"
->
-    ❤️ Save to Favorites
-</button>
+            <button
+                class="favorite-btn"
+                id="favoriteBtn"
+            >
+                ❤️ Save to Favorites
+            </button>
 
-    <h2>Instructions</h2>
+            <h2>Instructions</h2>
 
-    <div class="instructions">
+            <div class="instructions">
 
-        ${
-            recipe.strInstructions
-                .split(". ")
-                .map(step => `<p>${step}.</p>`)
-                .join("")
-        }
+                ${
+                    displayInstructions(
+                        recipe.strInstructions.split(". ")
+                    )
+                }
 
-    </div>
+            </div>
 
-</div>
+        </div>
 
         `;
-const favoriteBtn = document.getElementById("favoriteBtn");
 
-favoriteBtn.addEventListener("click", () => {
+        const favoriteBtn =
+            document.getElementById("favoriteBtn");
 
-    const favorites =
-        JSON.parse(localStorage.getItem("favorites")) || [];
+        favoriteBtn.addEventListener("click", () => {
 
-    const exists =
-        favorites.some(item => item.idMeal === recipe.idMeal);
+            const favorites =
+                JSON.parse(localStorage.getItem("favorites")) || [];
 
-    if (!exists) {
+            const exists =
+                favorites.some(item => item.idMeal === recipe.idMeal);
 
-        favorites.push(recipe);
+            if (!exists) {
 
-        localStorage.setItem(
-            "favorites",
-            JSON.stringify(favorites)
-        );
+                favorites.push(recipe);
 
-        alert("Recipe added to Favorites ❤️");
+                localStorage.setItem(
+                    "favorites",
+                    JSON.stringify(favorites)
+                );
 
-    } else {
+                Swal.fire({
 
-        alert("Recipe already in Favorites.");
+                    icon: "success",
 
-    }
+                    title: "Recipe Saved!",
 
-});
+                    text: "Recipe added to Favorites ❤️"
 
-    }
+                });
 
+            } else {
 
-     catch (error) {
+                Swal.fire({
+
+                    icon: "info",
+
+                    title: "Already Saved",
+
+                    text: "This recipe is already in your Favorites."
+
+                });
+
+            }
+
+        });
+
+    } catch (error) {
 
         console.error(error);
 
-        recipeContainer.innerHTML =
-            "<h2>Error loading recipe.</h2>";
+        recipeContainer.innerHTML = `
+            <h2>Error loading recipe.</h2>
+        `;
 
     }
 
 }
-
 
 loadRecipe();
