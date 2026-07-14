@@ -3,10 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World!</title>
+
+    <title>Savorly | Discover. Save. Plan.</title>
+
+    <meta
+        name="description"
+        content="Discover delicious recipes, save your favorites, and plan your weekly meals with Savorly."
+    >
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-    <h1 id="message"></h1>
-    <script src="script.js"></script>
+
+<header>
+
+    <nav class="navbar">
+
+        <h1 class="logo">
+            Savorly
+        </h1>
+
+        <ul class="nav-links">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="explore.html">Explore</a></li>
+
+            <li><a href="favourite.html">Favorites</a></li>
+
+            <li><a href="planner.html">Meal Planner</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<div class="overlay">
+
+<h2>
+Cook Smarter. Eat Better.
+</h2>
+
+<p>
+
+Discover recipes from around the world, save your favorites, and plan every meal with confidence.
+
+</p>
+
+<div class="search-box">
+
+<input
+type="search"
+placeholder="Search recipes, ingredients or cuisines..."
+id="recipeSearch"
+>
+
+<button id="searchBtn">
+
+Explore
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="featured">
+
+<div class="section-title">
+
+        <h2>Featured Recipes</h2>
+
+        <p>
+            Discover some of our hand-picked delicious meals.
+        </p>
+
+    </div>
+
+    <div class="recipe-grid">
+
+        <!-- Recipe Card 1 -->
+
+        <article class="recipe-card">
+
+            <img src="Assests/images/jallof-rice.jfif" alt="Jollof Rice">
+
+            <div class="recipe-content">
+
+                <span class="recipe-category">
+                    Nigerian
+                </span>
+
+                <h3>Jollof Rice</h3>
+
+                <p>
+                    A rich and flavorful West African rice dish loved across the continent.
+                </p>
+
+               <div class="recipe-actions">
+
+    <button
+        class="favorite-btn"
+        data-id="${recipe.idMeal}"
+    >
+        ❤️
+    </button>
+
+    <button
+        class="recipe-btn"
+        data-id="${recipe.idMeal}"
+    >
+        View Recipe →
+    </button>
+
+</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Recipe Card 2 -->
+
+        <article class="recipe-card">
+
+            <img src="Assests/images/creamy-pasta.jfif" alt="Creamy Pasta">
+
+            <div class="recipe-content">
+
+                <span class="recipe-category">
+                    Italian
+                </span>
+
+                <h3>Creamy Garlic Pasta</h3>
+
+                <p>
+                    A comforting pasta recipe with a rich creamy garlic sauce.
+                </p>
+
+                <div class="recipe-actions">
+
+    <button
+        class="favorite-btn"
+        data-id="${recipe.idMeal}"
+    >
+        ❤️
+    </button>
+
+    <button
+        class="recipe-btn"
+        data-id="${recipe.idMeal}"
+    >
+        View Recipe →
+    </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- Recipe Card 3 -->
+
+        <article class="recipe-card">
+
+            <img src="Assests/images/pancakes.jfif" alt="Pancakes">
+
+            <div class="recipe-content">
+
+                <span class="recipe-category">
+                    Breakfast
+                </span>
+
+                <h3>Classic Pancakes</h3>
+
+                <p>
+                    Soft, fluffy pancakes served with maple syrup and fresh fruits.
+                </p>
+
+                <div class="recipe-actions">
+
+    <button
+        class="favorite-btn"
+        data-id="${recipe.idMeal}"
+    >
+        ❤️
+    </button>
+
+    <button
+        class="recipe-btn"
+        data-id="${recipe.idMeal}"
+    >
+        View Recipe →
+    </button>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="why-savorly">
+
+    <div class="section-title">
+
+        <h2>Why Choose Savorly?</h2>
+
+        <p>
+            Cooking should be simple, enjoyable, and inspiring. Savorly gives you all the tools you need in one place.
+        </p>
+
+    </div>
+
+    <div class="features-grid">
+
+        <article class="feature-card">
+
+            <div class="feature-icon">🍽️</div>
+
+            <h3>Discover Recipes</h3>
+
+            <p>
+                Search hundreds of delicious recipes from different cuisines around the world.
+            </p>
+
+        </article>
+
+        <article class="feature-card">
+
+            <div class="feature-icon">❤️</div>
+
+            <h3>Save Favorites</h3>
+
+            <p>
+                Save meals you love and access them anytime with one click.
+            </p>
+
+        </article>
+
+        <article class="feature-card">
+
+            <div class="feature-icon">📅</div>
+
+            <h3>Meal Planner</h3>
+
+            <p>
+                Organize your weekly meals and make cooking stress-free.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+<section class="newsletter">
+      <h2>Stay Inspired</h2>
+
+    <p>
+        Get delicious recipes and cooking inspiration delivered to your inbox.
+    </p>
+
+    <form>
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+        >
+
+        <button type="submit">
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+</main>
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <h2>Savorly</h2>
+
+            <p>
+                Discover. Save. Plan.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="favorites.html">Favorites</a>
+            <a href="planner.html">Meal Planner</a>
+
+        </div>
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <p>Email: hello@savorly.com</p>
+
+            <p>Made with ❤️ using JavaScript</p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+
+        © 2026 Savorly. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+<script type="module" src="js/app.js"></script>
+
 </body>
-</html> 
+</html>
